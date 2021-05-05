@@ -8,7 +8,7 @@ public class CommonUtil {
      * @param left
      * @param right
      */
-    public void swap(int[] nums, int left, int right) {
+    public static void swap(int[] nums, int left, int right) {
         int temp = nums[left];
         nums[left] = nums[right];
         nums[right] = temp;

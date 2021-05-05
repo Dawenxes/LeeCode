@@ -1,6 +1,6 @@
 package solution11;
 
-public class MaxArea {
+public class MaxArea_1 {
     public int maxArea(int[] height) {
         int i = 0, j = height.length - 1;
         int ans = Integer.MIN_VALUE;

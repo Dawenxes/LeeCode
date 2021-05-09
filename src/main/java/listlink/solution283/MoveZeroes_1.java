@@ -1,4 +1,4 @@
-package solution283;
+package listlink.solution283;
 
 import common.CommonUtil;
 

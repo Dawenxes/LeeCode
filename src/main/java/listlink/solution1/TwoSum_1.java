@@ -1,4 +1,4 @@
-package solution1;
+package listlink.solution1;
 
 import java.util.*;
 

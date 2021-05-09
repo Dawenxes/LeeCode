@@ -1,7 +1,4 @@
-package solution70;
-
-import java.util.HashMap;
-import java.util.Map;
+package listlink.solution70;
 
 public class ClimbStairs_1 {
     public int climbStairs(int n) {

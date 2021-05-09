@@ -1,4 +1,4 @@
-package solution15;
+package listlink.solution15;
 
 import java.util.ArrayList;
 import java.util.Arrays;

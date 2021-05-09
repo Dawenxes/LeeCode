@@ -1,4 +1,4 @@
-package solution11;
+package listlink.solution11;
 
 public class MaxArea_1 {
     public int maxArea(int[] height) {

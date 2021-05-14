@@ -1,4 +1,4 @@
-package solution206;
+package listlink.solution206;
 
 import common.CommonUtil;
 import common.ListNode;

@@ -1,4 +1,4 @@
-package listlink.Solution146;
+package listlink.solution146;
 
 import java.util.HashMap;
 

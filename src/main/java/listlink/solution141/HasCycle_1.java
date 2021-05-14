@@ -4,7 +4,7 @@ import common.ListNode;
 
 import java.util.HashSet;
 
-public class HasCycle {
+public class HasCycle_1 {
   public boolean hasCycle(ListNode head) {
     if (head == null || head.next == null) {
       return false;

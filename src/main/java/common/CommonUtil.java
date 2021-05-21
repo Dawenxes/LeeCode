@@ -31,7 +31,9 @@ public class CommonUtil {
             node.next = head.next;
             head.next = node;
         }
-        return head;
+        ListNode tmp = head.next;
+        head.next = null;
+        return tmp;
     }
 
     /**

@@ -3,7 +3,7 @@ package qeque.solution42;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class TrapByStack {
+public class TrapByStack_2 {
   public int trap(int[] height) {
     int ans = 0;
     Deque<Integer> stack = new LinkedList<>();
@@ -14,8 +14,8 @@ public class TrapByStack {
           break;
         }
         Integer left = stack.peek();
-        Integer currHeight = Math.min(height[i], height[left]) - height[top];
-        ans += currHeight * (i - left - 1);
+        int currentHeight = Math.min(height[left], height[i]) - height[top];
+        ans += currentHeight * (i - left - 1);
       }
       stack.push(i);
     }

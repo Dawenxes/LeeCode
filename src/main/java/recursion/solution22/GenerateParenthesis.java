@@ -18,7 +18,6 @@ public class GenerateParenthesis {
       }
     if (left < n) _generate(s + "(", left + 1, right, n);
     if (right < left) _generate(s + ")", left, right + 1, n);
-
     }
 
 }

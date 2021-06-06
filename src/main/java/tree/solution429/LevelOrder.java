@@ -3,7 +3,6 @@ package tree.solution429;
 import common.ntree.Node;
 
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -29,6 +28,7 @@ public class LevelOrder {
     }
     return result;
   }
+
   public List<List<Integer>> levelOrder_1(Node root) {
     if (root == null) return result;
     List<Node> previousLayer = new ArrayList<>();
@@ -50,7 +50,7 @@ public class LevelOrder {
   public void level(Node root, List<Integer> list) {
     List<Integer> nextList = new ArrayList<>();
     if (root == null) {
-      return ;
+      return;
     }
     if (root.children != null) {
       for (int i = 0; i < root.children.size(); i++) {
@@ -60,6 +60,5 @@ public class LevelOrder {
       }
     }
     result.add(list);
-
   }
 }

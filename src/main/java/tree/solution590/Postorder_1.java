@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Postorder {
+public class Postorder_1 {
   List<Integer> list = new ArrayList<>();
 
   public List<Integer> postorder(Node root) {
@@ -19,10 +19,8 @@ public class Postorder {
     if (root == null) {
       return;
     }
-    if (root.children != null) {
-      for (int i = 0; i < root.children.size(); i++) {
-        postorder(root.children.get(i));
-      }
+    for (int i = 0; i < root.children.size(); i++) {
+      post(root.children.get(i));
     }
     visit(root);
   }
@@ -40,12 +38,11 @@ public class Postorder {
       return list2;
     }
     stack.push(root);
-
     while (!stack.isEmpty()) {
-      root = stack.pop();
+      root = stack.poll();
       list2.addFirst(root.val);
-      for (int i = 0; i < root.children.size(); i++) {
-        stack.push(root.children.get(i));
+      for (int i = 0; i < root.children.size()-1; i++) {
+        stack.add(root.children.get(i));
       }
     }
     return list2;

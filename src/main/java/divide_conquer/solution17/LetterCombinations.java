@@ -1,4 +1,4 @@
-package solution17;
+package divide_conquer.solution17;
 
 import java.util.*;
 

@@ -19,6 +19,9 @@ public class MinMutation {
     }
 
     private int _bfs(Set<String> st, Set<String> en, Set<String> basic, int len) {
+        if (st.size() == 0) {
+            return -1;
+        }
         if (st.size() < en.size()) {
             _bfs(en, st, basic, len);
         }

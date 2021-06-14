@@ -45,11 +45,7 @@ public class LadderLength_1 {
     return 0;
   }
 
-  private void addEdge(String s) {
+  private void addEdge(String s) {}
 
-  }
-
-  private void addWord(String s) {
-
-  }
+  private void addWord(String s) {}
 }

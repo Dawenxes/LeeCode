@@ -29,7 +29,7 @@ public class IsValidBST {
         root = root.left;
       }
       root = stack.pop();
-      if (root.val >= inorder) {
+      if (root.val <= inorder) {
         return false;
       }
       inorder = root.val;

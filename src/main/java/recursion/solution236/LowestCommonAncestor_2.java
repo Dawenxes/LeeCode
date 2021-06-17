@@ -17,11 +17,12 @@ public class LowestCommonAncestor_2 {
 
   private boolean _dfs(TreeNode root, TreeNode p, TreeNode q) {
     if (root == null) {
+      //
       return false;
     }
     boolean lson = _dfs(root.left, p, q);
     boolean rson = _dfs(root.right, p, q);
-    if ((lson && rson) || ((lson || rson) && (root.val == p.val || root.val == q.val))) {
+    if ((lson && rson) || (root.val == p.val || root.val == q.val) && (lson || rson)) {
       result = root;
     }
     return (root.val == p.val || root.val == q.val) || (lson || rson);
@@ -33,29 +34,28 @@ public class LowestCommonAncestor_2 {
     }
     TreeNode left = lowestCommonAncestor_1(root.left, p, q);
     TreeNode right = lowestCommonAncestor_1(root.right, p, q);
-    if (right == null) {
-      return left;
-    }
     if (left == null) {
       return right;
+    }
+    if (right == null) {
+      return left;
     }
     return root;
   }
 
-  Map<Integer, TreeNode> parents = new HashMap<>();
-  Set<Integer> visited = new HashSet<>();
-
+  Map<Integer, TreeNode> parent = new HashMap<>();
+  Set<Integer> pParents = new HashSet<>();
   public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
     _dfsVisit(root);
     while (p != null) {
-      visited.add(p.val);
-      p = this.parents.get(p.val);
+      pParents.add(p.val);
+      p = parent.get(p.val);
     }
     while (q != null) {
-      if (visited.contains(q.val)) {
+      if (pParents.contains(q.val)) {
         return q;
       }
-      q = this.parents.get(q.val);
+      q = parent.get(q.val);
     }
     return null;
   }
@@ -65,12 +65,13 @@ public class LowestCommonAncestor_2 {
       return;
     }
     if (root.left != null) {
-      parents.put(root.left.val, root);
+      parent.put(root.left.val, root);
       _dfsVisit(root.left);
     }
     if (root.right != null) {
-      parents.put(root.right.val, root);
+      parent.put(root.right.val, root);
       _dfsVisit(root.right);
     }
   }
+
 }

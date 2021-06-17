@@ -2,6 +2,11 @@ package recursion.solution236;
 
 import common.TreeNode;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class LowestCommonAncestor_2 {
   TreeNode result = null;
 
@@ -35,5 +40,37 @@ public class LowestCommonAncestor_2 {
       return right;
     }
     return root;
+  }
+
+  Map<Integer, TreeNode> parents = new HashMap<>();
+  Set<Integer> visited = new HashSet<>();
+
+  public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
+    _dfsVisit(root);
+    while (p != null) {
+      visited.add(p.val);
+      p = this.parents.get(p.val);
+    }
+    while (q != null) {
+      if (visited.contains(q.val)) {
+        return q;
+      }
+      q = this.parents.get(q.val);
+    }
+    return null;
+  }
+
+  private void _dfsVisit(TreeNode root) {
+    if (root == null) {
+      return;
+    }
+    if (root.left != null) {
+      parents.put(root.left.val, root);
+      _dfsVisit(root.left);
+    }
+    if (root.right != null) {
+      parents.put(root.right.val, root);
+      _dfsVisit(root.right);
+    }
   }
 }

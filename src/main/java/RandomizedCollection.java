@@ -21,6 +21,7 @@ public class RandomizedCollection {
     public RandomizedCollection() {
         idx = new HashMap<>();
         nums = new ArrayList<>();
+        
     }
 
     /**

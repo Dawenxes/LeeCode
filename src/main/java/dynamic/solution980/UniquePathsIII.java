@@ -9,7 +9,6 @@ public class UniquePathsIII {
     int ans = 0;
 
     public int uniquePathsIII(int[][] grid) {
-
         R = grid.length;
         C = grid[0].length;
         for (int i = 0; i < R; i++) {

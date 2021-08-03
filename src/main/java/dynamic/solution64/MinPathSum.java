@@ -9,12 +9,13 @@ public class MinPathSum {
             for (int j = 0; j < c; j++) {
                 if (j == 0) {
                     dp[j] += grid[i][j];
-                } else if (i == 0 && j != 0) {
+                } else if (i == 0) {
                     dp[j] = dp[j - 1] + grid[i][j];
-                } else if (i != 0 && j != 0) {
+                } else {
                     dp[j] = Math.min(dp[j - 1], dp[j]) + grid[i][j];
                 }
             }
         }
-        return dp[c - 1];    }
+        return dp[c - 1];
+    }
 }

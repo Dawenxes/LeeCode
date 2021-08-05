@@ -14,8 +14,7 @@ public class MinWindow {
     Map<Character, Integer> cnt = new HashMap<>();
 
     public static void main(String[] args) {
-        System.out.println(new MinWindow().minWindow("AA",
-                "AA"));
+        System.out.println(new MinWindow().minWindow("AA", "AA"));
     }
 
     public String minWindow(String s, String t) {

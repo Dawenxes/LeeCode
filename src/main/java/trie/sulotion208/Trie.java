@@ -58,5 +58,4 @@ public class Trie {
     public boolean startsWith(String prefix) {
         return searchPrifix(prefix) != null;
     }
-
 }

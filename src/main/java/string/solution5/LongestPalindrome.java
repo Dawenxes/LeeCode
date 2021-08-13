@@ -13,38 +13,29 @@ public class LongestPalindrome {
     }
 
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
-            return s;
+        if (s == null || s.length() < 1) {
+            return "";
         }
-        int maxLen = 1;
-        int begin = 0;
-        boolean[][] dp = new boolean[len][len];
-        // 初始化：所有长度为 1 的子串都是回文串
-        for (int i = 0; i < len; i++) {
-            dp[i][i] = true;
-        }
-        char[] charArray = s.toCharArray();
-        for (int L = 2; L <= len; L++) {
-            for (int j = 0; j < len - L + 1; j++) {
-                int end = j + L - 1;
-
-                if (charArray[j] != charArray[end]) {
-                    dp[j][end] = false;
-                    continue;
-                } else {
-                    if (L < 3) {
-                        dp[j][end] = true;
-                    } else {
-                        dp[j][end] = dp[j + 1][end - 1];
-                    }
-                }
-                if (dp[j][end]) {
-                    begin = j;
-                    maxLen = Math.max(maxLen, L);
-                }
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int i1 = expandAroundCenter(s, i, i);
+            int i2 = expandAroundCenter(s, i, i + 1);
+            int max = Math.max(i2, i1);
+            if (max > (end - start + 1)) {
+                start = i - (max - 1) / 2;
+                end = i + max / 2;
             }
         }
-        return s.substring(begin, begin + maxLen);
+        return s.substring(start, end + 1);
     }
+
+    public int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            --left;
+            ++right;
+        }
+
+        return right - left - 1;
+    }
+
 }

@@ -1,4 +1,4 @@
-package string.bm;
+package beauty.bm;
 
 import java.util.HashMap;
 import java.util.Map;

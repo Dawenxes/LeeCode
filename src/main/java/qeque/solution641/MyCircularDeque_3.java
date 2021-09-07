@@ -1,17 +1,18 @@
 package qeque.solution641;
 
-public class MyCircularDeque_1 {
+public class MyCircularDeque_3 {
 	int capacity;
 	int front;
-	int last;
-	int[] arr;
+	int end;
+	int[] values;
+
 
 	/** Initialize your data structure here. Set the size of the deque to be k. */
-	public MyCircularDeque_1(int k) {
-		arr = new int[k + 1];
-		front = 0;
-		last = 0;
+	public MyCircularDeque_3(int k) {
 		capacity = k + 1;
+		values = new int[k + 1];
+		front = 0;
+		end = 0;
 	}
 
 	/** Adds an item at the front of Deque. Return true if the operation is successful. */
@@ -19,14 +20,14 @@ public class MyCircularDeque_1 {
 		if (isFull()) {
 			return false;
 		}
-		front = (front - 1 + capacity) % capacity;
-		arr[front] = value;
+		values[front] = value;
+		front = (front + 1) % capacity;
 		return true;
 	}
 
 	/** Checks whether the circular deque is full or not. */
 	public boolean isFull() {
-		return (last + 1) % capacity == front;
+		return (front + 1) % capacity == end;
 	}
 
 	/** Adds an item at the rear of Deque. Return true if the operation is successful. */
@@ -34,8 +35,8 @@ public class MyCircularDeque_1 {
 		if (isFull()) {
 			return false;
 		}
-		arr[last] = value;
-		last = (last + 1) % capacity;
+		end = end == 0 ? (capacity - 1) : (end - 1);
+		values[end] = value;
 		return true;
 	}
 
@@ -44,13 +45,13 @@ public class MyCircularDeque_1 {
 		if (isEmpty()) {
 			return false;
 		}
-		front = (front + 1) % capacity;
+		front = front == 0 ? (capacity - 1) : (front - 1);
 		return true;
 	}
 
 	/** Checks whether the circular deque is empty or not. */
 	public boolean isEmpty() {
-		return last == front;
+		return end == front;
 	}
 
 	/** Deletes an item from the rear of Deque. Return true if the operation is successful. */
@@ -58,7 +59,7 @@ public class MyCircularDeque_1 {
 		if (isEmpty()) {
 			return false;
 		}
-		last = (last - 1 + capacity) % capacity;
+		end = (end + 1) % capacity;
 		return true;
 	}
 
@@ -67,7 +68,7 @@ public class MyCircularDeque_1 {
 		if (isEmpty()) {
 			return -1;
 		}
-		return arr[front];
+		return values[front == 0 ? (capacity - 1) : (front - 1)];
 	}
 
 	/** Get the last item from the deque. */
@@ -75,6 +76,6 @@ public class MyCircularDeque_1 {
 		if (isEmpty()) {
 			return -1;
 		}
-		return arr[(last - 1 + capacity) % capacity];
+		return values[end];
 	}
 }

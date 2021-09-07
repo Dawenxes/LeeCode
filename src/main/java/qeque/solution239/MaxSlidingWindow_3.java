@@ -3,10 +3,11 @@ package qeque.solution239;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class MaxSlidingWindow_2 {
+public class MaxSlidingWindow_3 {
 	public int[] maxSlidingWindow(int[] nums, int k) {
 		Deque<Integer> deque = new LinkedList<>();
 		int[] ans = new int[nums.length - k + 1];
+		// 求ans[0]
 		for (int i = 0; i < k; i++) {
 			while (!deque.isEmpty() && nums[deque.peekFirst()] < nums[i]) {
 				deque.pollFirst();

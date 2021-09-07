@@ -1,12 +1,6 @@
 package listlink.solution381;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 381. O(1) 时间插入、删除和获取随机元素 - 允许重复

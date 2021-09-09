@@ -2,7 +2,7 @@ package recursion.solution47;
 
 import java.util.*;
 
-public class PermuteUnique_2 {
+public class PermuteUnique_3 {
 	Deque<Integer> stack = new LinkedList<>();
 	List<List<Integer>> ans = new ArrayList<>();
 
@@ -16,7 +16,8 @@ public class PermuteUnique_2 {
 
 	private void _dfs(int[] nums, Boolean[] visited) {
 		if (stack.size() == nums.length) {
-			ans.add(new ArrayList<>(stack));
+			ArrayList<Integer> e = new ArrayList<>(stack);
+			ans.add(e);
 			return;
 		}
 		for (int i = 0; i < nums.length; i++) {
@@ -29,8 +30,8 @@ public class PermuteUnique_2 {
 			stack.push(nums[i]);
 			visited[i] = true;
 			_dfs(nums, visited);
-			visited[i] = false;
 			stack.pop();
+			visited[i] = false;
 		}
 	}
 }

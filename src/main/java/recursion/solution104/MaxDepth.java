@@ -1,10 +1,13 @@
 package recursion.solution104;
 
-import common.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
+import common.TreeNode;
+
+/**
+ * @author 张博能
+ */
 public class MaxDepth {
   public int maxDepth(TreeNode root) {
     if (root == null) {
@@ -15,7 +18,7 @@ public class MaxDepth {
     return Math.max(left, right) + 1;
   }
 
-  public int maxDepth_1(TreeNode root) {
+	public int maxDepth1(TreeNode root) {
     if (root == null) {
       return 0;
     }
@@ -25,7 +28,7 @@ public class MaxDepth {
     while (!queue.isEmpty()) {
       int size = queue.size();
       for (int i = 0; i < size; i++) {
-        TreeNode tmp = queue.poll(); //
+			TreeNode tmp = queue.poll();
         if (tmp.left != null) {
           queue.add(tmp.left);
         }

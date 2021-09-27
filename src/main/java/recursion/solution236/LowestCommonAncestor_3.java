@@ -7,7 +7,7 @@ import java.util.Set;
 
 import common.TreeNode;
 
-public class LowestCommonAncestor_1 {
+public class LowestCommonAncestor_3 {
 	TreeNode result = null;
 	Map<Integer, TreeNode> parent = new HashMap<>();
 	Set<Integer> pParents = new HashSet<>();
@@ -19,14 +19,15 @@ public class LowestCommonAncestor_1 {
 
 	private boolean _dfs(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == null) {
+			//
 			return false;
 		}
 		boolean lson = _dfs(root.left, p, q);
 		boolean rson = _dfs(root.right, p, q);
-		if ((rson && lson) || ((lson || rson) && (root.val == p.val) || (root.val == q.val))) {
+		if ((lson && rson) || (root.val == p.val || root.val == q.val) && (lson || rson)) {
 			result = root;
 		}
-		return (lson || rson) || root.val == p.val || root.val == q.val;
+		return (root.val == p.val || root.val == q.val) || (lson || rson);
 	}
 
 	public TreeNode lowestCommonAncestor_1(TreeNode root, TreeNode p, TreeNode q) {

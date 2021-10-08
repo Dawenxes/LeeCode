@@ -17,7 +17,6 @@ public class SolveSudoku {
     private boolean valid = false;
 
     public boolean solveSudoku(char[][] board) {
-
         int m = board.length;
         int n = board[0].length;
         for (int i = 0; i < m; i++) {

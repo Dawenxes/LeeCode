@@ -2,16 +2,16 @@ package dfs_bfs.solution433;
 
 import java.util.*;
 
-public class MinMutation {
-    char[] mode = {'A', 'C', 'G', 'T'};
+public class MinMutation_2 {
+	char[] mode = {'A', 'C', 'G', 'T'};
 
-    public int minMutation(String start, String end, String[] bank) {
+	public int minMutation(String start, String end, String[] bank) {
 		int ans = 0;
 
 		Map<String, Integer> map = new HashMap<>();
 		for (String s : bank) {
 			map.put(s, 0);
-        }
+		}
 		if (!map.containsKey(end)) {
 			return -1;
 		}

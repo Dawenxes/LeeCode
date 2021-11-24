@@ -1,46 +1,42 @@
 package greedy.solution322;
 
-import java.util.Arrays;
-
 public class CoinChange_2 {
-    int ans = Integer.MAX_VALUE;
+    int   ans = Integer.MAX_VALUE;
     int[] vi;
+
+    public static void main(String[] args) {
+        CoinChange_2 coinChange = new CoinChange_2();
+        System.out.println(coinChange.coinChange(new int[] {1, 2, 5}, 11));
+    }
 
     public int coinChange(int[] coins, int amount) {
         if (amount == 0) {
             return 0;
         }
-        Arrays.sort(coins);
         vi = new int[amount + 1];
-        Arrays.fill(vi, Integer.MAX_VALUE);
-        _greedy(coins, amount, coins.length - 1, 0);
-        return (ans == Integer.MAX_VALUE) ? -1 : ans;
+        return findWay(coins, amount);
     }
 
-    private void _greedy(int[] coins, int amount, int coins_index, int count) {
+    private int findWay(int[] coins, int amount) {
         if (amount == 0) {
-            ans = Math.min(count, ans);
-            return;
+            return 0;
         }
-        if (count >= vi[amount]) {
-            return;
+        if (amount < 0) {
+            return -1;
         }
-        if (count >= ans) {
-            return;
+        if (vi[amount] != 0) {
+            return vi[amount];
         }
 
-        if (coins_index < 0) {
-            return;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < coins.length; i++) {
+            int way = findWay(coins, amount - coins[i]);
+            if (way >= 0 && way + 1 < min) {
+                min = way + 1;
+            }
         }
-        for (int k = amount / coins[coins_index]; k >= 0 && k + count < ans; k--) {
-            _greedy(coins, amount - k * coins[coins_index], coins_index - 1, count + k);
-        }
-        vi[amount] = Math.min(count, vi[amount]);
+        vi[amount] = min == Integer.MAX_VALUE ? -1 : min;
+        return vi[amount];
     }
 
-
-    public static void main(String[] args) {
-        CoinChange_2 coinChange = new CoinChange_2();
-        System.out.println(coinChange.coinChange(new int[]{1, 2, 5}, 11));
-    }
 }

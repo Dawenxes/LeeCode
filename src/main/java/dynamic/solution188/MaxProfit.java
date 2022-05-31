@@ -26,7 +26,6 @@ public class MaxProfit {
             }
         }
         return dp[n - 1][2 * k - 1];
-
     }
 
     public static void main(String[] args) {

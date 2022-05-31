@@ -34,12 +34,16 @@ public class MaximalRectangle {
         for (char[] chars : matrix) {
             int cur_left = 0, cur_right = n;
             for (int j = 0; j < n; j++) { // compute height (can do this from either side)
-                if (chars[j] == '1') height[j]++;
-                else height[j] = 0;
+                if (chars[j] == '1') {
+                    height[j]++;
+                } else {
+                    height[j] = 0;
+                }
             }
             for (int j = 0; j < n; j++) { // compute left (from left to right)
-                if (chars[j] == '1') left[j] = Math.max(left[j], cur_left);
-                else {
+                if (chars[j] == '1') {
+                    left[j] = Math.max(left[j], cur_left);
+                } else {
                     left[j] = 0;
                     cur_left = j + 1;
                 }
@@ -53,8 +57,9 @@ public class MaximalRectangle {
                 }
             }
             // compute the area of rectangle (can do this from either side)
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < n; j++) {
                 maxA = Math.max(maxA, (right[j] - left[j]) * height[j]);
+            }
         }
         return maxA;
     }
